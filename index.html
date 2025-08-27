@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Copy Elite - Copy Trading Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0066ff;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: 3.5rem;
+        }
+
+        .navbar {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+
+        .btn-outline-primary {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056e6;
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .highlight-text {
+            color: var(--primary-blue);
+        }
+
+        .switching-text {
+            color: var(--primary-blue);
+            display: inline-block;
+            min-width: 200px;
+            text-align: left;
+        }
+
+        .stats-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stats-icon {
+            color: var(--primary-blue);
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .video-placeholder {
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 102, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            transform: translateY(-10px);
+        }
+
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 102, 255, 0.1), rgba(26, 26, 46, 0.3));
+            z-index: 1;
+        }
+
+        .video-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 40px;
+            text-align: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.4);
+        }
+
+        .play-button i {
+            font-size: 2rem;
+            color: white;
+            margin-left: 5px;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        .traders-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #000000 0%, #111111 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .number-highlight {
+            background: linear-gradient(90deg, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            margin: 0 8px;
+            padding: 5px 12px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .blue-text {
+            color: var(--primary-blue);
+        }
+
+        .sphere-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            position: relative;
+        }
+
+        .sphere-video {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 
+                0 0 50px rgba(0, 102, 255, 0.3),
+                0 0 100px rgba(0, 102, 255, 0.2),
+                0 0 200px rgba(0, 102, 255, 0.1);
+        }
+
+        .start-trading-btn {
+            background: linear-gradient(45deg, var(--primary-blue), #0056e6);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 25px rgba(0, 102, 255, 0.3);
+        }
+
+        .start-trading-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(0, 102, 255, 0.4);
+            background: linear-gradient(45deg, #0056e6, var(--primary-blue));
+        }
+
+        .about-us-section {
+            padding: 100px 0;
+        }
+        .about-us-title {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        .about-us-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .about-card {
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            background-size: cover;
+            background-position: center;
+        }
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .about-card h3 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            z-index: 2;
+        }
+        .about-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 95%;
+            z-index: 2;
+        }
+        .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .card-safety {
+            background-color: #e3dff8;
+            color: #1a1a1a;
+        }
+        .card-withdrawal {
+            background-color: #d7f1f0;
+            color: #1a1a1a;
+        }
+        .card-partner {
+            background-color: #e3dff8;
+            color: #1a1a1a;
+        }
+        .card-verification {
+            background: linear-gradient(135deg, #2a4a7e, #366baf);
+        }
+        .card-promotions {
+            background: linear-gradient(135deg, #003a7a, #0056e6);
+        }
+        .btn-open-account {
+            background-color: #fff;
+            color: #000;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-block;
+            width: auto;
+        }
+        .btn-open-account:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        .card-bg-icon {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            font-size: 8rem;
+            opacity: 0.08;
+            color: #000;
+            z-index: 1;
+            transform: rotate(-15deg);
+        }
+         .card-bg-icon-light {
+            color: #fff;
+            opacity: 0.1;
+            font-size: 9rem;
+        }
+        .card-safety .card-bg-icon {
+            color: rgba(0, 0, 0, 0.15);
+            font-size: 7rem;
+            right: 30px;
+            bottom: 20px;
+        }
+        .card-withdrawal .card-bg-icon {
+            color: rgba(0, 0, 0, 0.15);
+            font-size: 7rem;
+            right: 30px;
+            bottom: 20px;
+        }
+
+        /* START: New Styles for Tools Section */
+        .copy-trading-section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+        .copy-trading-section .section-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 20px 0;
+        }
+        .copy-trading-section .section-subtitle-small {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+        .copy-trading-visual {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .main-phone-img {
+            max-width: 280px;
+            z-index: 5;
+            animation: float 8s ease-in-out infinite;
+        }
+        .visual-bg-shape {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 450px;
+            background-color: var(--primary-blue);
+            opacity: 0.2;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 10s ease-in-out infinite;
+            z-index: 1;
+        }
+        .floating-item {
+            position: absolute;
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 6;
+            animation: float 10s ease-in-out infinite;
+        }
+        .floating-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .floating-item span {
+            font-weight: 600;
+        }
+        .trader-1 { top: 5%; left: 15%; animation-delay: -2s; }
+        .trader-2 { top: 20%; right: 5%; animation-delay: 0s; }
+        .trader-3 { bottom: 25%; left: 0%; animation-delay: -4s; }
+        .trader-4 { bottom: 5%; right: 15%; animation-delay: -6s; }
+        
+        .three-steps-section {
+            padding: 100px 0;
+        }
+        .three-steps-section .section-title span {
+            opacity: 0.5;
+            font-weight: 400;
+        }
+        .steps-wrapper {
+            position: relative;
+            padding: 40px 0;
+        }
+        .step-rings {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .step-rings div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 45%;
+        }
+        .ring-1 { width: 60%; height: 200px; }
+        .ring-2 { width: 80%; height: 260px; }
+        .ring-3 { width: 100%; height: 320px; }
+        .step-item {
+            z-index: 2;
+        }
+        .step-number {
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+        .step-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 15px 0 10px 0;
+        }
+        .step-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+        .step-arrow {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+        /* END: New Styles for Tools Section */
+
+
+        .footer {
+            background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 300px;
+        }
+
+        .footer-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .newsletter-section {
+            max-width: 350px;
+        }
+
+        .newsletter-text {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--primary-blue);
+        }
+
+        .newsletter-btn {
+            background: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 0 8px 8px 0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .newsletter-btn:hover {
+            background: #0056e6;
+            transform: translateY(-1px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            margin-top: 50px;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate(-50%, -50%) rotate(0deg); }
+            50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(-50%, -50%) rotate(180deg); }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 992px) {
+            .about-card p { max-width: 100%; }
+            .card-bg-image { max-width: 50%; opacity: 0.8; }
+            .section-title, .traders-title, .traders-subtitle, .hero-title { font-size: 2.5rem; }
+            .copy-trading-visual { margin-top: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-subtitle { font-size: 1.1rem; }
+            .sphere-video { width: 280px; height: 280px; }
+            .sphere-container { height: 320px; }
+            .about-card { padding: 30px; }
+            .about-card h3 { font-size: 1.8rem; }
+            .step-arrow { display: none; }
+            .step-item { margin-bottom: 30px; }
+            .footer { padding: 60px 0 20px; }
+            .footer-bottom-content { flex-direction: column; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
+        }
+
+        @media (max-width: 576px) {
+            .section-title, .traders-title, .traders-subtitle, .hero-title { font-size: 2rem; }
+            .hero-section { padding: 80px 0; }
+            .sphere-video { width: 250px; height: 250px; }
+            .number-highlight { margin: 0 4px; padding: 3px 8px; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-input { border-radius: 8px; margin-bottom: 10px; }
+            .newsletter-btn { border-radius: 8px; }
+            .footer-bottom-links { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">
+                <span class="highlight-text">Interactive</span> CopyElite
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#market">Market</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#company">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tools">Tools</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary">Sign Up</button>
+                    <button class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="floating-elements">
+            <div class="floating-element">
+                <i class="fas fa-chart-line fa-3x"></i>
+            </div>
+            <div class="floating-element">
+                <i class="fas fa-coins fa-2x"></i>
+            </div>
+            <div class="floating-element">
+                <i class="fas fa-rocket fa-3x"></i>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">
+                        Innovative Copy Trading Platform for 
+                        <span class="switching-text" id="switchingText">Everyone</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        A Platform With Endless Possibilities. When Experts trade, you trade. 
+                        If they profit, you profit too. Open your account in minutes!
+                    </p>
+                    
+                    <div class="mb-4">
+                        <div class="stats-item">
+                            <i class="fas fa-users stats-icon"></i>
+                            <span><strong>1,007,000+</strong> Active Users</span>
+                        </div>
+                        <div class="stats-item">
+                            <i class="fas fa-star stats-icon"></i>
+                            <span><strong>4.5</strong> Google Rating</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-lg">Get Started</button>
+                </div>
+                
+                <div class="col-lg-6">
+                    <video src="assets/image/HeroVideo-Z7_gxCn9.mp4" autoplay muted loop style="width: 100%; height: 100%;"></video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="tradingview-widget-container" style="margin-top:80px;">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+            "symbols": [
+                { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
+                { "proName": "FOREXCOM:GBPUSD", "title": "GBP/USD" },
+                { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
+                { "proName": "BITSTAMP:BTCUSD", "title": "BTC/USD" },
+                { "proName": "BITSTAMP:ETHUSD", "title": "ETH/USD" },
+                { "proName": "NASDAQ:TSLA", "title": "Tesla" },
+                { "proName": "NASDAQ:AAPL", "title": "Apple" },
+                { "proName": "NASDAQ:AMZN", "title": "Amazon" }
+            ],
+            "showSymbolLogo": true,
+            "colorTheme": "dark",
+            "isTransparent": true,
+            "displayMode": "adaptive",
+            "locale": "en"
+        }
+        </script>
+    </div>
+
+    <section class="traders-section" id="market">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="sphere-container">
+                        <video class="sphere-video" autoplay muted loop>
+                            <source src="assets/image/play_720p.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h2 class="section-title traders-title">
+                        Find out why over
+                    </h2>
+                    <h2 class="section-title traders-subtitle">
+                        <span class="number-highlight">5</span>
+                        <span class="number-highlight">0</span>
+                        <span class="number-highlight">4</span>
+                        <span class="number-highlight">0</span>
+                        <span class="number-highlight">3</span>+ traders
+                    </h2>
+                    <h2 class="section-title traders-subtitle">
+                        <span class="blue-text">are online</span> trading<br>
+                        with Copyelite
+                    </h2>
+                    
+                    <button class="btn start-trading-btn">Start Trading Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="company" class="about-us-section">
+        <div class="container">
+            <div class="text-center mb-5 pb-3">
+                <h2 class="about-us-title">About Us</h2>
+                <p class="about-us-subtitle">Dive down the history of copyelite</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="about-card card-safety">
+                        <div class="card-content">
+                            <h3>Safety and Security</h3>
+                            <p>Since our founding, we've prioritized the safety of your funds. Your account is protected by multi-level security, 2FA, and robust verification.</p>
+                        </div>
+                        <i class="fas fa-shield-alt card-bg-icon"></i>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5">
+                    <div class="about-card card-withdrawal">
+                        <div class="card-content">
+                            <h3>Fast Withdrawal</h3>
+                            <p>30 minutes to withdraw funds. Quick and reliable access to your funds.</p>
+                        </div>
+                        <i class="fas fa-wallet card-bg-icon"></i>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="about-card card-partner">
+                        <div class="card-content">
+                            <h3>Multi-Level Partner Program</h3>
+                            <p>Limitless income. Attract new users, earn more, and grow beyond limits. Partner with us today!</p>
+                        </div>
+                        <i class="fas fa-sitemap card-bg-icon"></i>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="about-card card-verification">
+                        <div class="card-content">
+                            <h3>Fast Verification</h3>
+                            <p>Get your account verified quickly with our efficient verification process, allowing you to start trading without delay.</p>
+                        </div>
+                        <i class="fas fa-user-check card-bg-icon card-bg-icon-light"></i>
+                    </div>
+                </div>
+
+                 <div class="col-lg-12">
+                     <div class="about-card card-promotions">
+                        <div class="card-content">
+                            <h3>Best Promotions</h3>
+                            <p>Take advantage of our competitive promotions and bonuses, designed to give you the best value and enhance your trading experience.</p>
+                            <a href="#" class="btn-open-account">Open Account</a>
+                        </div>
+                         <i class="fas fa-tags card-bg-icon card-bg-icon-light"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="copy-trading-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center text-lg-start">
+                    <h2 class="section-title">Start copying <br>& start earning</h2>
+                    <p class="section-subtitle">Copyelite Trading provides the ability to copy successful strategies OR to share your own strategy and start earning when others copy it.</p>
+                    <p class="section-subtitle-small">Experience the sheer brilliance of Copyelite Trading - a revolutionary platform that effortlessly mirrors the success of profitable traders.</p>
+                    <a href="#" class="btn btn-primary btn-lg mt-3">Start Copytrading</a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="copy-trading-visual">
+                        <div class="visual-bg-shape"></div>
+                        <img src="	https://www.ameritradesbrokers.com/assets/copy-trade3-uq0GdfhB.png" alt="Copy Trading on a smartphone" class="main-phone-img">
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="three-steps-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                 <h2 class="section-title">Start Trading in 3 Simple <span>Steps</span></h2>
+            </div>
+            <div class="steps-wrapper">
+                <div class="step-rings">
+                    <div class="ring-1"></div>
+                    <div class="ring-2"></div>
+                    <div class="ring-3"></div>
+                </div>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-3 step-item text-center">
+                        <div class="step-number">1</div>
+                        <h3>REGISTER</h3>
+                        <p>Open a live account and start trading in just minutes.</p>
+                    </div>
+                    <div class="col-md-1 text-center d-none d-md-block">
+                        <i class="fas fa-arrow-right step-arrow"></i>
+                    </div>
+                    <div class="col-md-3 step-item text-center">
+                        <div class="step-number">2</div>
+                        <h3>FUND</h3>
+                        <p>Fund your account using a wide range of funding methods.</p>
+                    </div>
+                    <div class="col-md-1 text-center d-none d-md-block">
+                        <i class="fas fa-arrow-right step-arrow"></i>
+                    </div>
+                    <div class="col-md-3 step-item text-center">
+                        <div class="step-number">3</div>
+                        <h3>TRADE</h3>
+                        <p>Access 1000+ instruments across all asset classes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <span class="highlight-text">Interactive</span> COPYELITE
+                    </div>
+                    <p class="footer-description">
+                        The most advanced AI-powered trading platform for both beginners and professionals.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Products</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Trading Platform</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">AI Assistant</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-12 mb-4">
+                    <h5 class="footer-title">Subscribe</h5>
+                    <p class="newsletter-text">
+                        Stay updated with the latest trading insights and platform news.
+                    </p>
+                    <div class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email">
+                        <button class="newsletter-btn">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        © 2025 TradingProAI. All rights reserved.
+                    </div>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">AML Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Text switching animation
+        const texts = ['Everyone', 'Experts', 'Beginners'];
+        let currentIndex = 0;
+        const switchingTextElement = document.getElementById('switchingText');
+
+        function switchText() {
+            switchingTextElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                switchingTextElement.textContent = texts[currentIndex];
+                switchingTextElement.style.opacity = '1';
+            }, 300);
+        }
+
+        // Add transition effect
+        switchingTextElement.style.transition = 'opacity 0.3s ease-in-out';
+
+        // Switch text every 2 seconds
+        setInterval(switchText, 2000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1286,6 +1286,676 @@
             color: #856404;
             font-size: 12px;
         }
+                /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background: var(--dark-bg);
+        }
+
+        .testimonials-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        /* Testimonials Carousel */
+        .testimonials-carousel {
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .testimonial-slide {
+            display: none;
+            animation: slideIn 0.6s ease-in-out;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .testimonial-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-row {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .indicator-dot.active {
+            background: var(--primary-blue);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), #4da6ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .author-info h6 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .author-info small {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: var(--dark-bg);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-item::before,
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .stat-item:nth-child(1)::before {
+            left: -50px;
+            border-color: #ff6b35;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        .stat-item:nth-child(1)::after {
+            right: -50px;
+            border-color: #4ecdc4;
+            border-left-color: transparent;
+            border-top-color: transparent;
+        }
+
+        .stat-item:nth-child(2)::before {
+            left: -50px;
+            border-color: #45b7d1;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        .stat-item:nth-child(2)::after {
+            right: -50px;
+            border-color: #f9ca24;
+            border-left-color: transparent;
+            border-top-color: transparent;
+        }
+
+        .stat-item:nth-child(3)::before {
+            left: -50px;
+            border-color: #6c5ce7;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        .stat-item:nth-child(3)::after {
+            right: -50px;
+            border-color: #fd79a8;
+            border-left-color: transparent;
+            border-top-color: transparent;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .stat-sublabel {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        /* Regulation Section */
+        .regulation-section {
+            padding: 80px 0;
+            background: rgb(3, 7, 18);
+        }
+
+        .regulation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .regulation-item h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .regulation-item p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .partners-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .partners-title {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            height: 40px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+        }
+
+        /* Features Grid Section */
+        .features-grid-section {
+            padding: 100px 0;
+            background: var(--dark-bg);
+        }
+
+        .features-main-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            min-height: 500px;
+        }
+
+        .feature-large-card {
+            background: transparent;
+            border-radius: 20px;
+            padding: 50px;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-large-card h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .feature-large-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .phone-container {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-placeholder {
+            width: 250px;
+            height: 450px;
+            background: linear-gradient(135deg, #000000, #16213e);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 60px rgba(0, 102, 255, 0.3), 0 0 120px rgba(0, 102, 255, 0.1);
+        }
+
+        .corner-top-left {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .corner-top-right {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .corner-bottom-left {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .corner-bottom-right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .feature-bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 40px;
+            min-height: 500px;
+            margin-bottom: 60px;
+        }
+
+        .feature-bottom-card {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-bottom-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .feature-bottom-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .bottom-phone-container {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .testimonials-title {
+                font-size: 2.5rem;
+            }
+
+            .testimonial-card {
+                padding: 25px 20px;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .regulation-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .regulation-item h3 {
+                font-size: 2rem;
+            }
+
+            .partners-logos {
+                gap: 30px;
+            }
+
+            .features-main-grid,
+            .feature-bottom-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 30px;
+            }
+
+            .phone-container,
+            .bottom-phone-container {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .corner-top-left,
+            .corner-top-right,
+            .corner-bottom-left,
+            .corner-bottom-right {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .feature-large-card {
+                padding: 30px;
+            }
+
+            .feature-large-card h3 {
+                font-size: 2rem;
+            }
+
+            .phone-placeholder {
+                width: 150px;
+                height: 280px;
+            }
+        }
+
+                .trading-features-wrapper {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .trading-features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-box {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .cfd-row {
+            margin-bottom: 16px;
+        }
+
+        .cfd-item {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            text-align: left;
+            font-size: 15px;
+            color: #6c757d;
+            flex: 1;
+        }
+
+        .cfd-item .feature-check {
+            color: #28a745;
+            margin-right: 8px;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .cfd-item span {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066ff, #4da6ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        .feature-list li:last-child {
+            margin-bottom: 24px;
+        }
+
+        .feature-check {
+            color: #28a745;
+            margin-right: 12px;
+            margin-top: 2px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .feature-cta {
+            display: inline-flex;
+            align-items: center;
+            color: #6c757d;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .feature-cta:hover {
+            color: #0066ff;
+            background: #f0f7ff;
+            border-color: #bfdbfe;
+            text-decoration: none;
+        }
+
+        .feature-cta i {
+            margin-left: 8px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-cta:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Specific styling for different feature boxes */
+        .feature-box.order-execution {
+            background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .feature-box.grade-trading {
+            background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .feature-box.global-markets {
+            background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .feature-box.spreads {
+            background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .top-section {
+            margin-bottom: 30px;
+        }
+
+        .bottom-section {
+            margin-top: 30px;
+        }
+
+        /* Corner pricing overview buttons */
+        .pricing-overview-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #6c757d;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .pricing-overview-btn:hover {
+            background: #e9ecef;
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .pricing-overview-btn i {
+            margin-left: 6px;
+            font-size: 12px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .trading-features-wrapper {
+                padding: 60px 0;
+            }
+
+            .trading-features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 15px;
+            }
+
+            .feature-box {
+                padding: 30px 25px;
+            }
+
+            .feature-title {
+                font-size: 20px;
+            }
+
+            .pricing-overview-btn {
+                position: static;
+                margin-bottom: 20px;
+                align-self: flex-start;
+            }
+
+            .feature-box {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .feature-box {
+                padding: 25px 20px;
+            }
+
+            .feature-title {
+                font-size: 18px;
+                margin-bottom: 16px;
+            }
+
+            .feature-list li {
+                font-size: 14px;
+                margin-bottom: 12px;
+            }
+        }
+        
     </style>
 </head>
 
@@ -1784,6 +2454,120 @@
             </div>
         </div>
     </section>
+     <section class="trading-features-wrapper">
+        <div class="container-fluid">
+            <div class="trading-features-grid">
+                <!-- Top Left: Global Markets -->
+                <div class="feature-box global-markets top-section">
+                    <a href="#" class="pricing-overview-btn">
+                        Pricing Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <h3 class="feature-title">Global Markets At Your Fingertips</h3>
+                    
+                    <!-- First row of CFDs -->
+                    <div class="cfd-row d-flex justify-content-between mb-3">
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Forex CFDs</strong><br><small class="text-muted">61 Products</small></span>
+                        </div>
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Commodities CFDs</strong><br><small class="text-muted">24 Products</small></span>
+                        </div>
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Stocks CFDs</strong><br><small class="text-muted">+2100 Products</small></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Second row of CFDs -->
+                    <div class="cfd-row d-flex justify-content-between mb-4">
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Indices CFDs</strong><br><small class="text-muted">25 Products</small></span>
+                        </div>
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Bond CFDs</strong><br><small class="text-muted">5 Products</small></span>
+                        </div>
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Crypto CFDs</strong><br><small class="text-muted">21 Products</small></span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="feature-cta">
+                        Pricing Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Top Right: Spreads -->
+                <div class="feature-box spreads top-section">
+                    <a href="#" class="pricing-overview-btn">
+                        Pricing Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <h3 class="feature-title">Spreads from 0.0 Pips</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Raw spreads means really from 0.0 pips*</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Our diverse and proprietary liquidity mix keeps spreads tight 24/5</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="feature-cta">
+                        Pricing Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Bottom Left: Fast Order Execution -->
+                <div class="feature-box order-execution bottom-section">
+                    <h3 class="feature-title">Fast Order Execution</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Average execution speeds of under 40ms***</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Low latency fibre optic and Equinix NY4 server</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Free Low latency collocated VPS available</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="feature-cta">
+                        Get your Free VPS <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Bottom Right: Grade Trading -->
+                <div class="feature-box grade-trading bottom-section">
+                    <h3 class="feature-title">Grade Trading</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Real, deep and diverse liquidity you can trade on</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Over 29 Billion USD in FX trades processed daily</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Copied Trades have 100% success rates</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="feature-cta">
+                        Raw Pricing Benefits <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="traders-section" id="market">
         <div class="container">
@@ -1883,7 +2667,216 @@
             </div>
         </div>
     </section>
+    <!-- testimony-section -->
 
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="testimonials-title">Loved Across the Globe</h2>
+
+            <div class="testimonials-carousel">
+                <!-- Testimonial Slide 1 (Pair 1) -->
+                <div class="testimonial-slide active">
+                    <div class="testimonial-row">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "Copyelite is a financial wizard. Their ability to foresee market trends and recommend
+                                timely actions is remarkable. I've achieved significant growth in my investments under
+                                their guidance. They're not just financial advisors; they're strategic partners in
+                                wealth-building."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar overflow-hidden" style="width: 50px; height: 50px;">
+                                    <img src="assets/image/person-1.jpg" alt="" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="author-info">
+                                    <h6>Miller</h6>
+                                    <small>Crypto Enthusiast | Cosmos</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "I've been a client of Copyelite for years, and their dedication to my financial success
+                                has never wavered. Their well-rounded expertise covers everything from retirement
+                                planning to tax-efficient investing. They're an invaluable asset in securing my
+                                financial future."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar overflow-hidden" style="width: 50px; height: 50px;">
+                                    <img src="assets/image/person-2.jpg" alt="" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="author-info">
+                                    <h6>Yousaf</h6>
+                                    <small>Retirement Planner | Nebula</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Slide 2 (Pair 2) -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-row">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "The copy trading feature is game-changing! I connected with top performers and my
+                                portfolio grew by 45% in just 6 months. The platform is intuitive and the community
+                                aspect makes trading feel less isolating. Highly recommend for both beginners and
+                                experts."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar overflow-hidden" style="width: 50px; height: 50px;">
+                                    <img src="assets/image/person-3.jpg" alt="" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="author-info">
+                                    <h6>Sarah Chen</h6>
+                                    <small>Day Trader | Singapore</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "What sets Copyelite apart is their transparency and risk management. Every trade is
+                                tracked, every strategy is explained. I've learned more about trading in 3 months here
+                                than in years of going solo. The inverse feature saved me from major losses!"
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar overflow-hidden" style="width: 50px; height: 50px;">
+                                    <img src="assets/image/person-4.jpg" alt="" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="author-info">
+                                    <h6>Robert Kim</h6>
+                                    <small>Portfolio Manager | Seoul</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Slide 3 (Single + Pair) -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-row">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "From a complete novice to generating consistent monthly returns - Copyelite made it
+                                possible. The educational resources, combined with real-time copying, created the
+                                perfect learning environment. My confidence in trading has skyrocketed."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar overflow-hidden" style="width: 50px; height: 50px;">
+                                    <img src="assets/image/person-4.jpg" alt="" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="author-info">
+                                    <h6>Amanda Torres</h6>
+                                    <small>New Trader | Miami</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "The multilingual support and global community aspect is fantastic. I can connect with
+                                traders worldwide and learn different strategies. The platform's reliability during high
+                                volatility periods has been impressive. Definitely my go-to trading platform."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar overflow-hidden" style="width: 50px; height: 50px;">
+                                    <img src="assets/image/person-6.jpg" alt="" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="author-info">
+                                    <h6>Luis Rodriguez</h6>
+                                    <small>Forex Trader | Madrid</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <div class="indicator-dot active" onclick="currentSlide(1)"></div>
+                <div class="indicator-dot" onclick="currentSlide(2)"></div>
+                <div class="indicator-dot" onclick="currentSlide(3)"></div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">99.99%</span>
+                    <div class="stat-label">Accuracy rate</div>
+                    <div class="stat-sublabel">in fulfilling orders</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5,000+</span>
+                    <div class="stat-label">Startup businesses</div>
+                    <div class="stat-sublabel">Partner with Ameritrades</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <div class="stat-label">Happy Clients</div>
+                    <div class="stat-sublabel">this year alone</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regulation Section -->
+    <section class="regulation-section">
+        <div class="container">
+            <div class="regulation-grid">
+                <div class="regulation-item">
+                    <h3>We're Regulated</h3>
+                    <p>Copyelite operates in accordance with the financial regulations and compliance standards outlined
+                        by the SLIBC (Reg. No. 2023-00068) and FSCA (Reg. No. 47490).</p>
+                </div>
+                <div class="regulation-item">
+                    <h3>You're Protected</h3>
+                    <p>Client funds are held in a segregated account with AA-Rated Global Bank and trading accounts have
+                        negative balance protection. Regular audits and indemnity insurance.</p>
+                </div>
+            </div>
+
+            <div class="partners-section">
+                <h4 class="partners-title">Our Partners</h4>
+                <div class="partners-logos">
+                    <div class="partner-logo">TradingPlatform</div>
+                    <div class="partner-logo">oneZero</div>
+                    <div class="partner-logo">ID3global</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid Section -->
+    <section class="features-grid-section">
+        <div class="container">
+            <div class="features-main-grid">
+                <div class="feature-large-card corner-top-left">
+                    <h3>Copy Pros<br>in a Tap</h3>
+                    <p>Enroll, connect, and start copying traders in 12 languages.</p>
+                </div>
+                <div class="phone-container">
+                    <div class="">
+                        <img class="bg-white phone-placeholder" src="assets/image/phone-mockup-bg-1R4MOq-t.png" alt="">
+                    </div>
+                </div>
+                <div class="feature-large-card corner-top-right">
+                    <h3>Connect<br>and Profit</h3>
+                    <p>Join a large trading community to chat, share strategies, and trade together.</p>
+                </div>
+                <div class="feature-large-card corner-bottom-left">
+                    <h3>Go Against<br>the Flow</h3>
+                    <p>Challenge friends or use the "inverse" trade feature on losing traders.</p>
+                </div>
+                <div class="feature-large-card corner-bottom-right">
+                    <h3>Performance<br>You Can Trust</h3>
+                    <p>Follow top traders with live PnL reporting or become a signal provider.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+         <!-- tools Section -->
     <section id="tools" class="copy-trading-section">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -2071,6 +3064,37 @@
                 }
             });
         });
+
+           // Testimonial Carousel
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const indicators = document.querySelectorAll('.indicator-dot');
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+
+            // Show current slide
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto-advance slides every 4 seconds
+        setInterval(nextSlide, 4000);
+
+        // Initialize first slide
+        showSlide(0);
     </script>
 </body>
 

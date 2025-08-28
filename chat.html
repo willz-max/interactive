@@ -3,585 +3,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive CopyElite - Copy Trading Platform</title>
+    <title>Trading Features Section</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-blue: #4A90FF;
-            --dark-bg: #0a0a0a;
-            --card-bg: #1a1a1a;
-            --text-light: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.7);
+        .trading-features-wrapper {
+            background: #f8f9fa;
+            padding: 80px 0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .trading-features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        body {
-            background: #000000;
-            color: var(--text-light);
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation Styles */
-        .navbar {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
+        .feature-box {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
             transition: all 0.3s ease;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--text-light) !important;
-        }
-
-        .brand-interactive {
-            color: var(--text-light);
-        }
-
-        .brand-copy {
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .brand-elite {
-            color: var(--text-light);
-            text-transform: uppercase;
-        }
-
-        .navbar-nav {
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--text-light) !important;
-            font-weight: 500;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-blue) !important;
-        }
-
-        .dropdown-menu {
-            background: rgba(10, 10, 10, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-        }
-
-        .dropdown-item {
-            color: var(--text-light) !important;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(74, 144, 255, 0.1);
-            color: var(--primary-blue) !important;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 120px 0 80px;
-            background: radial-gradient(ellipse at center, rgba(74, 144, 255, 0.1) 0%, rgba(0, 0, 0, 0.9) 70%);
-        }
-
-        .hero-content {
-            z-index: 10;
-            position: relative;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .hero-title .counter-section {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .counter-digit {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 0.5rem 0.8rem;
-            font-size: 4rem;
-            font-weight: 700;
-            min-width: 80px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        .plus-traders {
-            color: var(--text-light);
-            font-size: 4rem;
-            font-weight: 700;
-        }
-
-        .highlight-text {
-            color: var(--primary-blue);
-            font-weight: 700;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 500px;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
-
-        /* Video Container */
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            border-radius: 20px;
             overflow: hidden;
-            background: linear-gradient(45deg, #1a1a2e, #16213e);
-            box-shadow: 
-                0 20px 60px rgba(74, 144, 255, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            animation: float 6s ease-in-out infinite;
         }
 
-        .video-placeholder {
-            width: 100%;
-            height: 100%;
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .cfd-row {
+            margin-bottom: 16px;
+        }
+
+        .cfd-item {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
             flex-direction: column;
-            background: radial-gradient(circle at 50% 50%, rgba(74, 144, 255, 0.2), transparent 70%);
-            position: relative;
+            text-align: left;
+            font-size: 15px;
+            color: #6c757d;
+            flex: 1;
         }
 
-        .video-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            transform: translate(-50%, -50%);
-            border: 2px solid var(--primary-blue);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
+        .cfd-item .feature-check {
+            color: #28a745;
+            margin-right: 8px;
+            margin-bottom: 4px;
+            font-size: 14px;
         }
 
-        .video-icon {
-            font-size: 4rem;
-            color: var(--primary-blue);
-            z-index: 2;
-            animation: bounce 2s ease-in-out infinite;
+        .cfd-item span {
+            display: flex;
+            flex-direction: column;
         }
 
-        .video-text {
-            color: var(--text-muted);
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            z-index: 2;
-        }
-
-        /* CTA Button */
-        .cta-button {
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 1rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            background: #3d7de6;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(74, 144, 255, 0.4);
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.5s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        /* TradingView Widget */
-        .trading-widget {
-            margin-top: 4rem;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg); 
-            }
-            33% { 
-                transform: translateY(-15px) rotate(2deg); 
-            }
-            66% { 
-                transform: translateY(-10px) rotate(-1deg); 
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { 
-                opacity: 0.6;
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% { 
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.1);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 20px rgba(74, 144, 255, 0.5);
-            }
-            to {
-                box-shadow: 0 0 30px rgba(74, 144, 255, 0.8);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
-            .counter-digit {
-                font-size: 3.5rem;
-                min-width: 70px;
-            }
-            .plus-traders {
-                font-size: 3.5rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 3rem;
-                text-align: center;
-                margin-bottom: 3rem;
-            }
-            .counter-digit {
-                font-size: 3rem;
-                min-width: 60px;
-            }
-            .plus-traders {
-                font-size: 3rem;
-            }
-            .hero-subtitle {
-                text-align: center;
-                margin: 0 auto 3rem;
-            }
-            .video-container {
-                height: 500px;
-                margin-top: 3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 100px 0 60px;
-            }
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .counter-digit {
-                font-size: 2.5rem;
-                min-width: 50px;
-                padding: 0.3rem 0.5rem;
-            }
-            .plus-traders {
-                font-size: 2.5rem;
-            }
-            .video-container {
-                height: 400px;
-            }
-            .navbar-nav {
-                gap: 0;
-            }
-            .nav-link {
-                padding: 0.5rem 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            .counter-digit {
-                font-size: 2rem;
-                min-width: 45px;
-                padding: 0.2rem 0.4rem;
-            }
-            .plus-traders {
-                font-size: 2rem;
-            }
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            .cta-button {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
-        }
-
-        /* Background Effects */
-        .hero-section::before {
+        .feature-box::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-            z-index: 1;
+            height: 4px;
+            background: linear-gradient(90deg, #0066ff, #4da6ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        .feature-list li:last-child {
+            margin-bottom: 24px;
+        }
+
+        .feature-check {
+            color: #28a745;
+            margin-right: 12px;
+            margin-top: 2px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .feature-cta {
+            display: inline-flex;
+            align-items: center;
+            color: #6c757d;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .feature-cta:hover {
+            color: #0066ff;
+            background: #f0f7ff;
+            border-color: #bfdbfe;
+            text-decoration: none;
+        }
+
+        .feature-cta i {
+            margin-left: 8px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-cta:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Specific styling for different feature boxes */
+        .feature-box.order-execution {
+            background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .feature-box.grade-trading {
+            background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .feature-box.global-markets {
+            background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .feature-box.spreads {
+            background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .top-section {
+            margin-bottom: 30px;
+        }
+
+        .bottom-section {
+            margin-top: 30px;
+        }
+
+        /* Corner pricing overview buttons */
+        .pricing-overview-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #6c757d;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .pricing-overview-btn:hover {
+            background: #e9ecef;
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .pricing-overview-btn i {
+            margin-left: 6px;
+            font-size: 12px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .trading-features-wrapper {
+                padding: 60px 0;
+            }
+
+            .trading-features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 15px;
+            }
+
+            .feature-box {
+                padding: 30px 25px;
+            }
+
+            .feature-title {
+                font-size: 20px;
+            }
+
+            .pricing-overview-btn {
+                position: static;
+                margin-bottom: 20px;
+                align-self: flex-start;
+            }
+
+            .feature-box {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .feature-box {
+                padding: 25px 20px;
+            }
+
+            .feature-title {
+                font-size: 18px;
+                margin-bottom: 16px;
+            }
+
+            .feature-list li {
+                font-size: 14px;
+                margin-bottom: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#home">
-                <span class="brand-interactive">interactive</span>
-                <span class="brand-copy">copy</span><span class="brand-elite">elite</span>
-            </a>
-            
-            <button class="navbar-toggler border-0 text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Markets
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Forex</a></li>
-                            <li><a class="dropdown-item" href="#">Crypto</a></li>
-                            <li><a class="dropdown-item" href="#">Stocks</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Company
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">About Us</a></li>
-                            <li><a class="dropdown-item" href="#">Careers</a></li>
-                            <li><a class="dropdown-item" href="#">Contact</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Tools
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Trading Tools</a></li>
-                            <li><a class="dropdown-item" href="#">Analytics</a></li>
-                            <li><a class="dropdown-item" href="#">Education</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <h1 class="hero-title">
-                        Find out why over
-                        <div class="counter-section">
-                            <div class="counter-digit">5</div>
-                            <div class="counter-digit">0</div>
-                            <div class="counter-digit">4</div>
-                            <div class="counter-digit">0</div>
-                            <div class="counter-digit">3</div>
-                            <span class="plus-traders">+ traders</span>
+    <section class="trading-features-wrapper">
+        <div class="container-fluid">
+            <div class="trading-features-grid">
+                <!-- Top Left: Global Markets -->
+                <div class="feature-box global-markets top-section">
+                    <a href="#" class="pricing-overview-btn">
+                        Pricing Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <h3 class="feature-title">Global Markets At Your Fingertips</h3>
+                    
+                    <!-- First row of CFDs -->
+                    <div class="cfd-row d-flex justify-content-between mb-3">
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Forex CFDs</strong><br><small class="text-muted">61 Products</small></span>
                         </div>
-                        <span class="highlight-text">are online</span> trading<br>
-                        with Copyelite
-                    </h1>
-                    
-                    <p class="hero-subtitle">
-                        Join thousands of successful traders who have discovered the power of copy trading. 
-                        When experts trade, you trade. When they profit, you profit too.
-                    </p>
-                    
-                    <button class="cta-button">
-                        Start Trading Now
-                    </button>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="video-container">
-                        <div class="video-placeholder">
-                            <!-- Replace this placeholder with your video -->
-                            <!-- <video src="path/to/your/video.mp4" autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;"></video> -->
-                            <i class="fas fa-play-circle video-icon"></i>
-                            <p class="video-text">Your animated network video will go here</p>
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Commodities CFDs</strong><br><small class="text-muted">24 Products</small></span>
+                        </div>
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Stocks CFDs</strong><br><small class="text-muted">+2100 Products</small></span>
                         </div>
                     </div>
+                    
+                    <!-- Second row of CFDs -->
+                    <div class="cfd-row d-flex justify-content-between mb-4">
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Indices CFDs</strong><br><small class="text-muted">25 Products</small></span>
+                        </div>
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Bond CFDs</strong><br><small class="text-muted">5 Products</small></span>
+                        </div>
+                        <div class="cfd-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span><strong>Crypto CFDs</strong><br><small class="text-muted">21 Products</small></span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="feature-cta">
+                        Pricing Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Top Right: Spreads -->
+                <div class="feature-box spreads top-section">
+                    <a href="#" class="pricing-overview-btn">
+                        Pricing Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <h3 class="feature-title">Spreads from 0.0 Pips</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Raw spreads means really from 0.0 pips*</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Our diverse and proprietary liquidity mix keeps spreads tight 24/5</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="feature-cta">
+                        Pricing Overview <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Bottom Left: Fast Order Execution -->
+                <div class="feature-box order-execution bottom-section">
+                    <h3 class="feature-title">Fast Order Execution</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Average execution speeds of under 40ms***</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Low latency fibre optic and Equinix NY4 server</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Free Low latency collocated VPS available</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="feature-cta">
+                        Get your Free VPS <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Bottom Right: Grade Trading -->
+                <div class="feature-box grade-trading bottom-section">
+                    <h3 class="feature-title">Grade Trading</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Real, deep and diverse liquidity you can trade on</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Over 29 Billion USD in FX trades processed daily</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Copied Trades have 100% success rates</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="feature-cta">
+                        Raw Pricing Benefits <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TradingView Widget -->
-    <div class="trading-widget">
-        <div class="container">
-            <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-                {
-                    "symbols": [
-                        { "proName": "FOREXCOM:EURUSD", "title": "EUR/USD" },
-                        { "proName": "FOREXCOM:GBPUSD", "title": "GBP/USD" },
-                        { "proName": "FOREXCOM:USDJPY", "title": "USD/JPY" },
-                        { "proName": "BITSTAMP:BTCUSD", "title": "BTC/USD" },
-                        { "proName": "BITSTAMP:ETHUSD", "title": "ETH/USD" },
-                        { "proName": "NASDAQ:TSLA", "title": "Tesla" },
-                        { "proName": "NASDAQ:AAPL", "title": "Apple" },
-                        { "proName": "NASDAQ:AMZN", "title": "Amazon" }
-                    ],
-                    "showSymbolLogo": true,
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "displayMode": "adaptive",
-                    "locale": "en"
-                }
-                </script>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Counter animation
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            const timer = setInterval(() => {
-                start += increment;
-                if (start >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(start);
-                }
-            }, 16);
-        }
-
-        // Initialize counter animation on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const counters = document.querySelectorAll('.counter-digit');
-            const values = [5, 0, 4, 0, 3];
-            
-            setTimeout(() => {
-                counters.forEach((counter, index) => {
-                    animateCounter(counter, values[index], 1500 + (index * 200));
-                });
-            }, 500);
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-            }
-        });
-
-        // Video placeholder click effect (for when you add the actual video)
-        document.querySelector('.video-placeholder').addEventListener('click', function() {
-            // This is where you would trigger video play/pause when you add your actual video
-            console.log('Video placeholder clicked - replace with actual video controls');
-        });
-    </script>
 </body>
 </html>
